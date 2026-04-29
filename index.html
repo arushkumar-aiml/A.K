@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>A.K | Ultra Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Premium UI Overlay -->
+    <div id="ui-layer">
+        <div class="header">
+            <div class="logo">A.K</div>
+            <div id="voice-pill">
+                <span class="dot"></span> 
+                <span id="v-text">Listening...</span>
+            </div>
+        </div>
+        <div class="score-container">
+            <span class="label">ENERGY</span>
+            <span id="score">000</span>
+        </div>
+    </div>
+
+    <!-- The 3D World -->
+    <div id="viewport">
+        <div id="player">
+            <div class="aura"></div>
+            <div class="sprite">🚀</div>
+        </div>
+        <div id="grid-floor"></div>
+        <div id="obstacles-group"></div>
+    </div>
+
+    <div id="start-screen">
+        <h1 class="glitch" data-text="A.K">A.K</h1>
+        <p>SAY "JUMP" TO ENTER THE VOID</p>
+        <button onclick="startGame()">START MISSION</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

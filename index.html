@@ -1,44 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>A.K | Ultra Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>A.K — Temple Runner</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Premium UI Overlay -->
-    <div id="ui-layer">
-        <div class="header">
-            <div class="logo">A.K</div>
-            <div id="voice-pill">
-                <span class="dot"></span> 
-                <span id="v-text">Listening...</span>
-            </div>
-        </div>
-        <div class="score-container">
-            <span class="label">ENERGY</span>
-            <span id="score">000</span>
-        </div>
-    </div>
 
-    <!-- The 3D World -->
-    <div id="viewport">
-        <div id="player">
-            <div class="aura"></div>
-            <div class="sprite">🚀</div>
-        </div>
-        <div id="grid-floor"></div>
-        <div id="obstacles-group"></div>
-    </div>
+  <!-- PARALLAX BG -->
+  <div class="parallax-wrap">
+    <div class="p-layer sky"></div>
+    <div class="p-layer moon"></div>
+    <div class="p-layer stars"></div>
+    <div class="p-layer far-trees" id="farTrees"></div>
+    <div class="p-layer near-trees" id="nearTrees"></div>
+    <div class="p-layer ruins" id="ruins"></div>
+  </div>
 
-    <div id="start-screen">
-        <h1 class="glitch" data-text="A.K">A.K</h1>
-        <p>SAY "JUMP" TO ENTER THE VOID</p>
-        <button onclick="startGame()">START MISSION</button>
+  <!-- START SCREEN -->
+  <div id="startScreen" class="screen active">
+    <div class="title-block">
+      <div class="ak-emblem">⚡</div>
+      <h1 class="game-title">A.K</h1>
+      <p class="game-sub">TEMPLE RUNNER</p>
+      <p class="game-tagline">Beyond Sight · Beyond Speed</p>
     </div>
+    <div class="badge-row">
+      <span class="badge">🎤 Voice</span>
+      <span class="badge">📱 Touch</span>
+      <span class="badge">⌨️ Keys</span>
+    </div>
+    <div class="hint-grid">
+      <div class="hint">⬆ SPACE — Jump</div>
+      <div class="hint">⬇ DOWN — Slide</div>
+      <div class="hint">🎤 "JUMP" — Fly</div>
+      <div class="hint">🎤 "SLIDE" — Duck</div>
+    </div>
+    <button class="cta-btn" id="btnStart">⚡ BEGIN QUEST</button>
+    <div class="secondary-btns">
+      <button class="sec-btn" id="btnMic">🎤 Voice: OFF</button>
+      <button class="sec-btn" id="btnMusic">🎵 Music: ON</button>
+    </div>
+    <div class="hs-line">⚡ Best Score: <span id="hsDisplay">0</span></div>
+    <div class="credits-line">by Arush &amp; Ayushi · A.K Squad</div>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- GAME OVER SCREEN -->
+  <div id="gameOverScreen" class="screen">
+    <div class="go-skull">💀</div>
+    <h2 class="go-title">CURSED!</h2>
+    <div class="go-scores">
+      <div class="go-row">Score <span id="goScore">0</span></div>
+      <div class="go-row gold">Best &nbsp;<span id="goBest">0</span></div>
+      <div class="go-row cyan">Coins <span id="goCoins">0</span></div>
+    </div>
+    <button class="cta-btn" id="btnRestart">↺ RUN AGAIN</button>
+    <button class="sec-btn" id="btnMenu">⌂ MAIN MENU</button>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-left">
+      <span class="hud-score" id="hudScore">0</span>
+      <span class="hud-lbl">PTS</span>
+    </div>
+    <div class="hud-center">
+      <span class="hud-speed" id="hudSpeed">× 1.0</span>
+    </div>
+    <div class="hud-right">
+      <span class="hud-coin">💰</span>
+      <span class="hud-coins" id="hudCoins">0</span>
+      <span class="hud-mic" id="micDot">🎤</span>
+    </div>
+  </div>
+
+  <!-- CANVAS -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- MOBILE CONTROLS -->
+  <div id="mobileCtrl" class="hidden">
+    <button class="mob-btn" id="mbJump">⬆<span>JUMP</span></button>
+    <button class="mob-btn" id="mbSlide">⬇<span>SLIDE</span></button>
+  </div>
+
+  <!-- VOICE TOAST -->
+  <div id="voiceToast" class="voice-toast hidden"></div>
+
+  <!-- PARTICLES DIV -->
+  <div id="fx"></div>
+
+  <script src="game.js"></script>
 </body>
 </html>
